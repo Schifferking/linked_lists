@@ -52,6 +52,13 @@ class LinkedList
     end
     node
   end
+
+  def pop
+    return self.head = nil if size == 1
+
+    second_to_last_node = at(size - 2)
+    second_to_last_node.next_node = nil
+  end
 end
 
 class Node
