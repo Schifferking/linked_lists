@@ -59,6 +59,18 @@ class LinkedList
     second_to_last_node = at(size - 2)
     second_to_last_node.next_node = nil
   end
+
+  def contains?(value)
+    node = head
+    return true if value == node.value || value == node.next_node.value
+
+    until node.next_node.nil? || value == node.value
+      return true if value == node.value || value == node.next_node.value
+
+      node = node.next_node
+    end
+    false
+  end
 end
 
 class Node
