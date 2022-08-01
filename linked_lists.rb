@@ -61,6 +61,8 @@ class LinkedList
   end
 
   def contains?(value)
+    return false if head.value.nil?
+
     node = head
     return true if value == node.value || value == node.next_node.value
 
@@ -70,6 +72,24 @@ class LinkedList
       node = node.next_node
     end
     false
+  end
+
+  def find(value)
+    return nil unless contains?(value)
+    return 0 if value == head.value
+
+    node = head.next_node
+    node_index = 1
+    return node_index if value == node.value
+
+    until node.next_node.nil? || value == node.value
+      return node_index if value == node.value
+      return node_index + 1 if value == node.next_node.value
+
+      node_index += 1
+      node = node.next_node
+    end
+    nil
   end
 end
 
