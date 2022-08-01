@@ -39,6 +39,19 @@ class LinkedList
     end
     nodes_count
   end
+
+  def at(index)
+    return nil if index > size
+    return tail if index == size - 1
+
+    node = head
+    nodes_count = 0
+    until nodes_count == index || node.next_node.nil?
+      node = node.next_node
+      nodes_count += 1
+    end
+    node
+  end
 end
 
 class Node
