@@ -18,6 +18,14 @@ class LinkedList
 
     tail.next_node = Node.new(value)
   end
+
+  def prepend(value)
+    append(value) if head.value.nil?
+
+    tmp_node = head
+    self.head = Node.new(value)
+    head.next_node = tmp_node
+  end
 end
 
 class Node
