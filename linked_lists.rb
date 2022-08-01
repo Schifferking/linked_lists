@@ -91,6 +91,22 @@ class LinkedList
     end
     nil
   end
+
+  def to_s
+    return nil if head.value.nil?
+
+    node = head
+    linked_list_string = "( #{node.value} )"
+    return linked_list_string + " -> nil" if size == 1
+
+    node = node.next_node
+
+    until node.next_node.nil?
+      linked_list_string += " -> ( #{node.value} )"
+      node = node.next_node
+    end
+    linked_list_string += " -> ( #{node.value} ) -> nil"
+  end
 end
 
 class Node
