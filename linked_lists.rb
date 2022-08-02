@@ -93,7 +93,7 @@ class LinkedList
   end
 
   def to_s
-    return nil if head.value.nil?
+    return nil if head.nil? || head.value.nil?
 
     node = head
     linked_list_string = "( #{node.value} )"
@@ -118,6 +118,17 @@ class LinkedList
     tmp_node = at(index)
     previous_node.next_node = new_node
     new_node.next_node = tmp_node
+  end
+
+  def remove_at(index)
+    return nil if index > size
+    return if index.zero? && head.value.nil?
+    return self.head = head.next_node if index.zero?
+    return pop if index == size - 1
+
+    previous_node = at(index - 1)
+    next_node_ = at(index + 1)
+    previous_node.next_node = next_node_
   end
 end
 
